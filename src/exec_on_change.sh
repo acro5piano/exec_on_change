@@ -11,15 +11,26 @@ die(){
     exit 2
 }
 
-[ `which inotifywait` ] || die 'Please install inotify-tools'
-[ $# -lt 2 ] && usage
-[ -e "$1" ] || die "No such file or directory: $1"
-
-ignore_files=$(cat exclude.txt | tr \\n \|)
-
-while [ 1 ]; do
+clear_console(){
     clear
-    inotifywait --exclude $ignore_files -r -e MODIFY "$1" 2>/dev/null || exit
-    $2
-done
+    echo "exec      : $COMMAND"
+    echo "at        : `date`"
+    echo "on_change : $ON_CHANGE"
+    echo "exclude   : $IGNORE_FILES"
+    printf '%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -
+}
+
+wait_for_change(){
+    inotifywait --exclude $IGNORE_FILES -r -e MODIFY "$ON_CHANGE" 2>/dev/null || exit
+}
+
+check_requirements(){
+    [ `which inotifywait` ] || die 'Please install inotify-tools'
+}
+
+check_args(){
+    [ "$ON_CHANGE" ] || usage
+    [ "$COMMAND" ] || usage
+    [ -e "$ON_CHANGE" ] || die "No such file or directory: $ON_CHANGE"
+}
 
