@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+ROOT_DIR=`dirname "${${(%):-%x}:A:h}"`
+ON_CHANGE=$1
+COMMAND=$2
+IGNORE_FILES=$(cat $ROOT_DIR/exclude.txt | tr \\n \| | sed 's/|$//')
+
+source $ROOT_DIR/src/exec_on_change.sh
+
+check_requirements
+check_args
+start_watch
+
