@@ -25,13 +25,13 @@ exec_on_change::wait_for_change(){
 }
 
 exec_on_change::check_requirements(){
-    [ `which inotifywait` ] || die 'Please install inotify-tools'
+    [ `which inotifywait` ] || exec_on_change::die 'Please install inotify-tools'
 }
 
 exec_on_change::check_args(){
-    [ "$ON_CHANGE" ] || usage
-    [ "$COMMAND" ] || usage
-    [ -e "$ON_CHANGE" ] || die "No such file or directory: $ON_CHANGE"
+    [ "$ON_CHANGE" ] || exec_on_change::usage
+    [ "$COMMAND" ] || exec_on_change::usage
+    [ -e "$ON_CHANGE" ] || exec_on_change::die "No such file or directory: $ON_CHANGE"
 }
 
 exec_on_change::start_watch(){

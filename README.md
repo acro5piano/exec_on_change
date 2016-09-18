@@ -5,8 +5,14 @@ Watcher in shell
 
 # Usage
 
+`exec_on_change
+
 ```sh
+# Start watching the current directory
+# When change 
 exec_on_change . date
+
+
 ```
 
 # Install
