@@ -1,10 +1,12 @@
 # exec_on_change
 Watcher in shell
 
+** Still developing **
+
 # Usage
 
 ```sh
-exec_on_change  . date
+exec_on_change . date
 ```
 
 # Install
