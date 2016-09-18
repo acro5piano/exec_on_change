@@ -8,7 +8,7 @@ IGNORE_FILES=$(cat $ROOT_DIR/exclude.txt | tr \\n \| | sed 's/|$//')
 
 source $ROOT_DIR/src/exec_on_change.sh
 
-check_requirements
-check_args
-start_watch
+exec_on_change::check_requirements
+exec_on_change::check_args
+exec_on_change::start_watch
 
