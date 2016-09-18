@@ -1,6 +1,7 @@
-#!/bin/zsh
+#!/bin/bash
 
-ROOT_DIR=`dirname "${${(%):-%x}:A:h}"`
+BIN_DIR=`dirname $0`
+ROOT_DIR=`dirname $BIN_DIR`
 ON_CHANGE=$1
 COMMAND=$2
 IGNORE_FILES=$(cat $ROOT_DIR/exclude.txt | tr \\n \| | sed 's/|$//')
