@@ -34,3 +34,11 @@ check_args(){
     [ -e "$ON_CHANGE" ] || die "No such file or directory: $ON_CHANGE"
 }
 
+start_watch(){
+    clear_console
+    while true; do
+        wait_for_change
+        clear_console
+        $COMMAND
+    done
+}
