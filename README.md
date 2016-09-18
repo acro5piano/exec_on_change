@@ -4,12 +4,12 @@ Watcher in shell
 
 # Usage
 
-`exec_on_change file command`
+`exec_on_change directory/file command`
 
 ```sh
-# Start watching the current directory.
-# When a file is changed, execute `ruby -v` command.
-% exec_on_change . 'ruby -v'
+# Start watching the current directory recursively.
+# When a file is changed, execute `ruby -v`.
+% exec_on_change ./ 'ruby -v'
 ```
 
 Watching like this:
