@@ -29,3 +29,8 @@ ruby 2.3.0p0 (2015-12-25 revision 53290) [x86_64-linux]
 antigen bundle acro5piano/exec_on_change
 ```
 
+# TODO
+
+- [ ] Add tests
+- [ ] Add options for files to be ignored
+- [ ] Add install guide for other zsh plugin managers
