@@ -21,7 +21,7 @@ exec_on_change::clear_console(){
 }
 
 exec_on_change::wait_for_change(){
-    inotifywait --exclude $IGNORE_FILES -r -e MODIFY "$ON_CHANGE" 2>/dev/null || exit
+    inotifywait --exclude $IGNORE_FILES -r -e MODIFY "$ON_CHANGE" 2>/dev/null
 }
 
 exec_on_change::check_requirements(){
@@ -39,6 +39,6 @@ exec_on_change::start_watch(){
     while true; do
         exec_on_change::wait_for_change
         exec_on_change::clear_console
-        $COMMAND
+        eval $COMMAND
     done
 }
